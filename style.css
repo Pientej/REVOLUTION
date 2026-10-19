@@ -1,0 +1,585 @@
+/* GENEL AYARLAR */
+:root {
+    --red: #ff1238;
+    --yellow: #ffd500;
+    --black: #080808;
+    --white: #ffffff;
+    --muted: #999999;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse at 80% 85%, #351006 0%, transparent 35%),
+        radial-gradient(ellipse at 15% 15%, #270609 0%, transparent 35%),
+        var(--black);
+    color: var(--white);
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+    position: relative;
+}
+
+/* ARKA PLAN IŞIKLARI */
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(120deg, transparent 65%, #ff173015 80%, transparent 95%),
+        radial-gradient(circle at 50% 50%, transparent 20%, #00000080 100%);
+    z-index: -1;
+}
+
+/* ANA YERLEŞİM */
+.page-container {
+    min-height: calc(100vh - 65px);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1.25fr 1fr;
+    align-items: center;
+    gap: 25px;
+    padding: 50px 5%;
+}
+
+/* SOL MARKA */
+.brand-section {
+    position: relative;
+    text-align: center;
+    z-index: 1;
+}
+
+.brand-logo {
+    width: 115px;
+    height: 120px;
+    margin: 0 auto 15px;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.crown {
+    position: absolute;
+    top: 0;
+    font-size: 42px;
+    color: var(--yellow);
+    filter: drop-shadow(0 0 15px #ffd50050);
+}
+
+.logo-letter {
+    font-family: "Orbitron", sans-serif;
+    font-size: 110px;
+    font-weight: 800;
+    line-height: 1;
+    font-style: italic;
+    background: linear-gradient(145deg, var(--red), #ff5b00 50%, var(--yellow));
+    color: transparent;
+    background-clip: text;
+    -webkit-background-clip: text;
+}
+
+.brand-title {
+    font-family: "Orbitron", sans-serif;
+    font-size: clamp(20px, 2vw, 31px);
+    font-weight: 800;
+    font-style: italic;
+    letter-spacing: -1px;
+    color: var(--red);
+    text-shadow: 0 0 20px #ff123830;
+}
+
+.brand-title span {
+    color: var(--yellow);
+}
+
+.brand-subtitle {
+    margin-top: 22px;
+    color: var(--yellow);
+    font-size: 11px;
+    letter-spacing: 5px;
+    font-weight: 600;
+}
+
+.brand-line {
+    width: 90px;
+    height: 2px;
+    margin: 28px auto;
+    background: linear-gradient(90deg, var(--red), var(--yellow));
+}
+
+.brand-watermark {
+    position: absolute;
+    top: 180px;
+    left: -60px;
+    font-family: "Orbitron", sans-serif;
+    font-size: 300px;
+    font-weight: 800;
+    font-style: italic;
+    color: #ff123808;
+    z-index: -1;
+    user-select: none;
+}
+
+/* GİRİŞ KARTI */
+.login-section {
+    width: 100%;
+    max-width: 590px;
+    margin: 0 auto;
+    z-index: 2;
+}
+
+.login-card {
+    position: relative;
+    padding: 45px 40px;
+    border: 1px solid transparent;
+    border-radius: 30px;
+    background:
+        linear-gradient(145deg, #0d0b0b, #080808) padding-box,
+        linear-gradient(135deg, var(--red), #a21a0b 45%, var(--yellow)) border-box;
+    box-shadow:
+        0 0 35px #ff123810,
+        0 0 80px #00000080,
+        inset 0 0 35px #ffb30005;
+    overflow: hidden;
+}
+
+.login-card::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 10%;
+    width: 80%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--yellow), transparent);
+    opacity: 0.7;
+}
+
+.card-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.card-heading h2 {
+    font-size: 23px;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+.card-heading p {
+    color: var(--muted);
+    font-size: 12px;
+    margin-top: 12px;
+    line-height: 1.6;
+}
+
+/* FORM ALANLARI */
+.input-group {
+    margin-bottom: 22px;
+}
+
+.input-group label {
+    display: block;
+    color: #dedede;
+    font-size: 12px;
+    font-weight: 600;
+    margin-bottom: 10px;
+}
+
+.input-box {
+    height: 58px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 0 18px;
+    border: 1px solid #ffffff20;
+    border-radius: 13px;
+    background: #ffffff04;
+    transition: border-color 0.3s, box-shadow 0.3s, background 0.3s;
+}
+
+.input-box > i {
+    width: 20px;
+    text-align: center;
+    color: var(--yellow);
+    font-size: 17px;
+    transition: color 0.3s;
+}
+
+.input-box:focus-within {
+    border-color: var(--red);
+    background: #ff123806;
+    box-shadow: 0 0 20px #ff123818;
+}
+
+.input-box:focus-within > i {
+    color: var(--red);
+}
+
+.input-box input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+    border: none;
+    outline: none;
+    background: transparent;
+    color: var(--white);
+    font-family: inherit;
+    font-size: 13px;
+}
+
+.input-box input::placeholder {
+    color: #777777;
+}
+
+.password-toggle {
+    border: none;
+    background: transparent;
+    color: #888888;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 5px;
+    transition: color 0.3s;
+}
+
+.password-toggle:hover {
+    color: var(--yellow);
+}
+
+/* HATIRLA / ŞİFREMİ UNUTTUM */
+.form-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin: 5px 0 28px;
+    font-size: 11px;
+}
+
+.remember {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    color: #aaaaaa;
+    cursor: pointer;
+}
+
+.remember input {
+    accent-color: var(--red);
+}
+
+.forgot-password {
+    color: var(--yellow);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.forgot-password:hover {
+    color: var(--red);
+}
+
+/* GİRİŞ BUTONU */
+.login-button {
+    width: 100%;
+    min-height: 59px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 13px;
+    border: none;
+    border-radius: 50px;
+    background: linear-gradient(100deg, var(--red), #ff5b00, var(--yellow));
+    background-size: 200% auto;
+    color: #100800;
+    font-family: inherit;
+    font-size: 15px;
+    font-weight: 800;
+    cursor: pointer;
+    transition: background-position 0.4s, transform 0.3s, box-shadow 0.3s;
+}
+
+.login-button:hover {
+    background-position: right center;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px #ff3d1835;
+}
+
+.login-button:active {
+    transform: translateY(0);
+}
+
+.login-button i {
+    font-size: 17px;
+}
+
+/* AYIRICI */
+.separator {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin: 30px 0;
+}
+
+.separator span {
+    height: 1px;
+    flex: 1;
+    background: #ffffff20;
+}
+
+.separator p {
+    color: #888888;
+    font-size: 10px;
+    letter-spacing: 2px;
+}
+
+/* KAYIT OL */
+.register-text {
+    color: #aaaaaa;
+    text-align: center;
+    font-size: 12px;
+}
+
+.register-text a {
+    color: var(--yellow);
+    text-decoration: none;
+    font-weight: 700;
+    margin-left: 7px;
+    transition: color 0.3s;
+}
+
+.register-text a:hover {
+    color: var(--red);
+    text-decoration: underline;
+}
+
+/* SAĞ SLOGAN */
+.slogan-section {
+    position: relative;
+    min-height: 320px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding-top: 20px;
+    overflow: hidden;
+}
+
+.slogan {
+    position: relative;
+    z-index: 1;
+    transform: rotate(-5deg);
+}
+
+.slogan p {
+    color: var(--red);
+    font-size: clamp(23px, 2.5vw, 38px);
+    font-weight: 800;
+    font-style: italic;
+}
+
+.slogan span {
+    display: block;
+    margin-top: 5px;
+    color: var(--yellow);
+    font-size: clamp(16px, 1.7vw, 25px);
+    font-weight: 600;
+    font-style: italic;
+}
+
+.slogan-underline {
+    width: 80%;
+    height: 3px;
+    margin-top: 18px;
+    background: linear-gradient(90deg, var(--red), var(--yellow));
+    transform: skewX(-35deg);
+    box-shadow: 0 0 15px #ff4b1530;
+}
+
+.sun-glow {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    right: -80px;
+    bottom: -80px;
+    border-radius: 50%;
+    background: #ff310b10;
+    filter: blur(45px);
+}
+
+.red-light {
+    position: absolute;
+    bottom: 25px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--red), var(--yellow), transparent);
+    opacity: 0.4;
+    transform: rotate(-15deg);
+}
+
+/* ALT BİLGİ */
+.footer {
+    min-height: 65px;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    color: #666666;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+.footer span {
+    color: var(--red);
+}
+
+/* MOBİL LOGO */
+.mobile-logo {
+    display: none;
+}
+
+/* TABLET */
+@media (max-width: 1050px) {
+    .page-container {
+        grid-template-columns: 0.7fr 1.3fr;
+        padding: 40px 5%;
+    }
+
+    .slogan-section {
+        display: none;
+    }
+
+    .brand-title {
+        font-size: 23px;
+    }
+
+    .brand-subtitle {
+        letter-spacing: 3px;
+    }
+
+    .login-card {
+        padding: 40px 30px;
+    }
+}
+
+/* TELEFON */
+@media (max-width: 650px) {
+    .page-container {
+        min-height: calc(100vh - 60px);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 25px 16px;
+    }
+
+    .brand-section {
+        display: none;
+    }
+
+    .login-section {
+        max-width: 440px;
+    }
+
+    .login-card {
+        padding: 30px 22px;
+        border-radius: 22px;
+    }
+
+    .mobile-logo {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 28px;
+    }
+
+    .mobile-logo i {
+        color: var(--yellow);
+        font-size: 24px;
+    }
+
+    .mobile-logo h2 {
+        font-family: "Orbitron", sans-serif;
+        font-size: 19px;
+        background: linear-gradient(90deg, var(--red), var(--yellow));
+        color: transparent;
+        background-clip: text;
+        -webkit-background-clip: text;
+    }
+
+    .card-heading {
+        margin-bottom: 27px;
+    }
+
+    .card-heading h2 {
+        font-size: 21px;
+    }
+
+    .input-box {
+        height: 54px;
+    }
+
+    .form-options {
+        font-size: 10px;
+    }
+
+    .footer {
+        font-size: 8px;
+        letter-spacing: 1px;
+        gap: 8px;
+    }
+}
+
+/* HAREKET AZALTMA TERCİHİ */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ═══════════════════════════════════════════
+   PHP LOGIN İÇİN EKLENEN UYARI KUTULARI
+   ═══════════════════════════════════════════ */
+.alert {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.alert-error {
+    background: #ff12381a;
+    border: 1px solid #ff123860;
+    color: #ff8095;
+}
+
+.alert-success {
+    background: #22c55e1a;
+    border: 1px solid #22c55e60;
+    color: #4ade80;
+}
+
+.alert i {
+    font-size: 15px;
+    flex-shrink: 0;
+}
